@@ -1,11 +1,11 @@
 def solution(pegs):
-    b = distances(pegs)
-    A_ = adj_mat(b)
-    x_ = predet_vars(A_, b)
-
-    det = 1 if len(b) % 2 == 0 else 3
+    # Ax = b
+    b = distances(pegs) # spaces between pegs
+    A_ = adj_mat(b) # adjugate matrix
+    x_ = predet_vars(A_, b) # x before 1/det
+    det = 1 if len(b) % 2 == 0 else 3 # determinant
+    
     ans = [2 * x_[0], det]
-
     if not_possible(x_, det):
         return [-1, -1]
     elif ans[0] % 3 == 0 and ans[1] == 3:
